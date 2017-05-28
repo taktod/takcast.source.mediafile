@@ -1,4 +1,4 @@
-# takcast.mediafile
+# takcast.source.mediafile
 
 # 作者
 
@@ -17,7 +17,7 @@ electronで作ってみる配信ツールのtakcastの動画や音声ファイ�
 takcastのプロジェクトで
 
 ```
-$ npm install taktod/takcast.mediafile
+$ npm install taktod/takcast.source.mediafile
 ```
 
 これで使えるようにする予定
@@ -49,7 +49,3 @@ sourceを提供する動作となってます。
 ## render/source.ts
 
 作成し提供するsourceオブジェクト
-
-## render/ui/paletteComponent.tsx
-
-sourceオブジェクトをパレットパネルに表示するui動作の定義
