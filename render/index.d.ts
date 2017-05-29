@@ -3,6 +3,9 @@ import * as React from "react";
 import { IPlugin } from "takcast.interface";
 import { ISourcePlugin } from "takcast.interface";
 import { ISource } from "takcast.interface";
+/**
+ * renderプロセス側で利用するプラグイン本体
+ */
 export declare class MediaFile implements ISourcePlugin {
     name: string;
     type: string;

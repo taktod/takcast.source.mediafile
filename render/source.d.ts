@@ -2,6 +2,9 @@ import { IBasePlugin } from "takcast.interface";
 import { ISource } from "takcast.interface";
 import { IMediaPlugin } from "takcast.interface";
 import { ISourceInfo } from "takcast.interface";
+/**
+ * 描画に利用するデータ
+ */
 export declare class Source implements ISource {
     name: string;
     type: string | string[];

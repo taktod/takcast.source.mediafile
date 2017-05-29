@@ -1,17 +1,26 @@
-import * as React from "react";
-
 import {IBasePlugin} from "takcast.interface";
 import {ISource} from "takcast.interface";
 import {IMediaPlugin} from "takcast.interface";
 import {ISourceInfo} from "takcast.interface";
 
+/**
+ * 描画に利用するデータ
+ */
 export class Source implements ISource {
+  // 名称(ファイル名を保持)
   public name:string;
+  // 動作タイプ 音声ファイルならaudio 動画ファイルならaudioとvideo
   public type:string|string[];
+
+  // 処理情報保持オブジェクト
   private info:{};
+  // 動作に利用するmediaタグ(audioタグ or videoタグ)
   private media:HTMLMediaElement;
+  // 映像参照に利用するvideoタグ(音声ファイルの場合はnull)
   private video:HTMLVideoElement;
 
+  // 音声は別でコントロールするため
+  // mediaSourceNode -> gainNode -> 出力とします
   private node:AudioNode;
   private gainNode:GainNode;
 
@@ -40,9 +49,6 @@ export class Source implements ISource {
     this.node.connect(this.gainNode);
     this.gainNode.connect(basePlugin.refDevnullNode());
   }
-/*  public refPaletteComponent():React.ComponentClass<{className:string,onClick:any,href:string,active:boolean,name:string}> {
-    return paletteComponent(this);
-  }*/
   public release():void {
     Object.keys(this.info).forEach((key) => {
       var info = this.info[key] as ISourceInfo;

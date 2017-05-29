@@ -1,5 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * 描画に利用するデータ
+ */
 var Source = (function () {
     function Source(basePlugin, file) {
         this.name = file.name;
@@ -26,9 +29,6 @@ var Source = (function () {
         this.node.connect(this.gainNode);
         this.gainNode.connect(basePlugin.refDevnullNode());
     }
-    /*  public refPaletteComponent():React.ComponentClass<{className:string,onClick:any,href:string,active:boolean,name:string}> {
-        return paletteComponent(this);
-      }*/
     Source.prototype.release = function () {
         var _this = this;
         Object.keys(this.info).forEach(function (key) {

@@ -15,22 +15,33 @@ var ReactBootstrap = require("react-bootstrap");
 var Form = ReactBootstrap.Form;
 var FormGroup = ReactBootstrap.FormGroup;
 var FormControl = ReactBootstrap.FormControl;
+/**
+ * 動作エレメントを選択するGUIを応答
+ * @param mediaFile
+ */
 exports.pickupComponent = function (mediaFile) {
+    // 設定データをとりあえずnullにしておく
     mediaFile._setTargetFile(null);
     return (function (_super) {
         __extends(PickupComponent, _super);
         function PickupComponent() {
             var _this = _super.call(this) || this;
-            _this.state = { type: "none" };
+            _this.state = { type: "none" }; // タイプの設定によってaudioタグを表示するか映像タグを表示するか決める
             _this.change = _this.change.bind(_this);
             return _this;
         }
+        /**
+         * ファイルを選択したときの処理
+         * @param item
+         */
         PickupComponent.prototype.change = function (item) {
             var file = item.target.files[0];
+            // 既存のelementをとりあえずすべて停止する
             var audio = this.refs["audio"];
             var video = this.refs["video"];
             audio.pause();
             video.pause();
+            // ファイル選択がどうなっているかで判定する
             if (!file) {
                 this.setState({ type: "none" });
                 item.target.value = null;
@@ -49,6 +60,7 @@ exports.pickupComponent = function (mediaFile) {
                 item.target.value = null;
                 return;
             }
+            // 選択したデータを保持しておく
             mediaFile._setTargetFile(file);
         };
         PickupComponent.prototype.render = function () {
