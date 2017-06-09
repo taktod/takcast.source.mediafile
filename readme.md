@@ -17,7 +17,7 @@ electronで作ってみる配信ツールのtakcastの動画や音声ファイ�
 takcastのプロジェクトで
 
 ```
-$ npm install taktod/takcast.source.mediafile
+$ npm install taktod/takcast.source.mediafile --save
 ```
 
 そのあとtakcastのプロジェクト側で
